@@ -5,7 +5,7 @@ This is an app that can be used as an accompaniment to something like a nerf nig
 
 # Classes
     
-**USER**
+**USER**\
 The user class will have you to put in a username and a password, then it will generate the following attributes and methods:
 
 *Attributes*
@@ -34,3 +34,6 @@ The user class will have you to put in a username and a password, then it will g
 * Win  
     - adds 1 to the win count
     - records the gametype you won
+
+* genUserID
+    - Generates a user ID
