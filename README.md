@@ -12,10 +12,10 @@ The user class will have you to put in a username and a password, then it will g
     A random generated number that will be used to represent the player
 
 * Wins
-    The amount of games the user has played
+    - The amount of games the user has played
 
 * Games Played
-    The total number of games played
+    - The total number of games played
 
 * Eliminations
-    How many players the user has eliminated
+    - How many players the user has eliminated
