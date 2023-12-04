@@ -37,3 +37,6 @@ The user class will have you to put in a username and a password, then it will g
 
 * genUserID
     - Generates a user ID
+ 
+**GAMEINTERFACE**\
+This interface is used for the creation of new game formats.
