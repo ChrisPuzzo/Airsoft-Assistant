@@ -53,7 +53,7 @@ public class FreeForAll implements gameInterface {
 
 	@Override
 	public void teamGen() {
-		// TODO Auto-generated method stub
+		System.out.println("There are no teams in this game");
 		
 	}
 
