@@ -14,19 +14,16 @@ public class User {
 	// Constructor
 	public User(String usern) 
 	{
+		this.setUserName(usern);
 		userName = usern;
-		genUserID();
-		wins = 0;
-		elims = 0;
-		gamesPlayed = 0;
-		genWinPer();
-		genKd();
+		this.genUserID();
+		this.setWins(0);
+		this.setElims(0);
+		this.setGamesPlayed(0);
+		this.genWinPer();
+		this.genKd();
 	}
 	
-	public static void user(String[] args)
-	{
-		User player = new User("input");
-	}
 	
 	// Generate Random UserID
 	private void genUserID(){
@@ -34,13 +31,19 @@ public class User {
 		String digStr;
 		dig = Math.random() * Math.pow(10,16);
 		digStr = String.valueOf(dig);
-		setUserID(digStr);
+		this.setUserID(digStr);
 	}
 	
 	private void genKd() {
 		double newKd;
 		newKd = this.elims/this.gamesPlayed;
 		setKd(newKd);
+	}
+	
+	
+	public void playGame() {
+		int games = getGamesPlayed();
+		this.setGamesPlayed(games + 1);
 	}
 	
 	private void genWinPer()
@@ -67,6 +70,10 @@ public class User {
 	// Don't want to be able to change username
 	public String getUserName() {
 		return userName;
+	}
+	
+	private void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 	// Getter and Setter for userID
