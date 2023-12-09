@@ -2,7 +2,6 @@ package nerfGame;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
 public class FreeForAll implements gameInterface {
 
 	ArrayList<String> playerArray = new ArrayList<String>();
@@ -14,7 +13,7 @@ public class FreeForAll implements gameInterface {
 	
 	@Override
 	public void gameRules() {
-		
+		System.out.println("Free For All: be the last man standing to win.");
 	}
 
 	@Override
@@ -46,7 +45,6 @@ public class FreeForAll implements gameInterface {
 		
 	}
 
-	@Override
 	public void elimination(String playerID) {
 		playerArray.remove(playerID);
 		

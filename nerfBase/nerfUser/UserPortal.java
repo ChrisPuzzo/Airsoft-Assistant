@@ -1,10 +1,12 @@
 package nerfUser;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserPortal {
 	
 	Scanner myObj = new Scanner(System.in);
+	ArrayList<User> currentUsers = new ArrayList<User>();
 
 	
 	private void print(String text) {
@@ -26,8 +28,9 @@ public class UserPortal {
 			this.print("Log in by username");
 		}
 		if (choice == "2") {
-			UserGen newUser = new UserGen();
-			newUser.regUI();
+			UserGen newUserGen = new UserGen();
+			User newUser = newUserGen.regUI();
+			currentUsers.add(newUser);
 		}
 		if (choice == "3") {
 			System.exit(0);
