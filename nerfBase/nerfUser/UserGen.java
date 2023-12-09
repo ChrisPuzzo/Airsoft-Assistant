@@ -1,5 +1,4 @@
 package nerfUser;
-
 import java.util.Scanner;
 
 public class UserGen {
