@@ -7,6 +7,7 @@ public class UserGen {
 	
 	private void createUser(String username, String password) {
 		User newUser = new User(username);
+		
 	}
 	
 	public void regUI() {

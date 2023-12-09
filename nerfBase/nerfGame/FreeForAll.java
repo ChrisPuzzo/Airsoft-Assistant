@@ -1,10 +1,11 @@
 package nerfGame;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 public class FreeForAll implements gameInterface {
 
-	private String[] playerArray;
+	ArrayList<String> playerArray = new ArrayList<String>();
 	private static String gameName = "Free for All";
 	private int totalPlayers;
 	
@@ -18,8 +19,7 @@ public class FreeForAll implements gameInterface {
 
 	@Override
 	public void addPlayer(String playerID) {
-		// TODO Auto-generated method stub
-		
+		playerArray.add(playerID);	
 	}
 
 	@Override
@@ -38,16 +38,17 @@ public class FreeForAll implements gameInterface {
 		    }
 		    else
 		    {
-		    	this.playerArray[0] = id;
+		    	this.addPlayer(id);
 		    }	
 		}
-		this.setTotalPlayers(playerArray.length);
+		System.out.println(playerArray);
+		this.totalPlayers = playerArray.size();
 		
 	}
 
 	@Override
 	public void elimination(String playerID) {
-		// TODO Auto-generated method stub
+		playerArray.remove(playerID);
 		
 	}
 
@@ -55,14 +56,6 @@ public class FreeForAll implements gameInterface {
 	public void teamGen() {
 		System.out.println("There are no teams in this game");
 		
-	}
-
-	public String[] getPlayerArray() {
-		return playerArray;
-	}
-
-	public void setPlayerArray(String[] playerArray) {
-		this.playerArray = playerArray;
 	}
 
 	public static String getGameName() {

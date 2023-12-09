@@ -34,6 +34,7 @@ public class User {
 		this.setUserID(digStr);
 	}
 	
+	//
 	private void genKd() {
 		double newKd;
 		newKd = this.elims/this.gamesPlayed;
