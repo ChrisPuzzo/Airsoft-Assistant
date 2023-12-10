@@ -8,7 +8,7 @@ public class FreeForAll implements gameInterface {
 	ArrayList<User> playerArray = new ArrayList<User>(); // Houses players who are playing the game
 	private static String gameName = "Free for All";
 	private int totalPlayers;
-	ArrayList<User> playersReg = new ArrayList<User>(); // Houses all registered players
+	static ArrayList<User> playersReg; // Houses all registered players
 
 	
 	Scanner myObj = new Scanner(System.in); // add scanner module to read in commands
@@ -23,22 +23,62 @@ public class FreeForAll implements gameInterface {
 		playersReg = playerArray;		
 	}
 	
+	private static void genTestUsers() {
+		playersReg.add(new User("Chris"));
+		playersReg.add(new User("Nick"));
+		playersReg.add(new User("Ohkami"));
+		playersReg.add(new User("Jonas"));
+		
+	}
+	
 	public void gameGo() {
 		print("Add players");
 		String choice = "1";
+		genTestUsers();
 		while(choice.equals("0") != true) {
-			print("Enter a userID to add them to the game");
+			print("Enter a userName to add them to the game");
 			print("When you are done type 0");
+			boolean found = false;
 			choice = myObj.nextLine();
 			for (int i = 0; i < playersReg.size(); i++) {
 				User player = playersReg.get(i);
-				if (player.getUserID().equals(choice)){
+				if (player.getUserName().equals(choice)){
+					print("Checking...");
 					addPlayer(player);
+					print(player.getUserName() + " Added");
+					found = true;
+					break;
+				}
+			
+			}
+			if (found==false && choice.equals("0")!=true) {
+				print("name not found. Please try again");
+			}
+		}
+		print("all players added");
+		gameRules();
+		while (playerArray.size()!=1) {
+			print("record player deaths by entering their usernames");
+			String death = myObj.nextLine();
+			print("record the player who eliminated this player");
+			String elim = myObj.nextLine();
+			for (int i = 0; i < playerArray.size(); i++) {
+				User currPlayer = playerArray.get(i);
+				if ((currPlayer.getUserName()).equals(death)) {
+					elimination(currPlayer);
+				}
+				if ((currPlayer.getUserName().equals(elim))) {
+					currPlayer.elimination();
 				}
 			}
-				
+		User winner = playerArray.get(0);
+		print("The Winner is " + winner.getUserName()+ "!");
+		winner.win();
+		print("Thanks for Playing");
+		playerArray.clear();
+		playersReg.clear();
+		System.exit(0);
 		}
-		
 	}
 	
 	@Override
@@ -51,6 +91,7 @@ public class FreeForAll implements gameInterface {
 	
 	public void elimination(User playerID) {
 		playerArray.remove(playerID);
+		playerID.death();
 		
 	}
 
