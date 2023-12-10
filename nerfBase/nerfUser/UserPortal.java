@@ -31,12 +31,12 @@ public class UserPortal {
 	
 	public static void main(String[] args) {
 		print("Welcome User to the Nerf Battle Companion!");
-		print("Menu:");
-		print("(1) Log in existing user");
-		print("(2) register new user");
-		print("(3) Exit");
 		while (true)
 		{
+			print("Menu:");
+			print("(1) Log in existing user");
+			print("(2) register new user");
+			print("(3) Exit");
 			String choice = myObj.nextLine().toString();
 			if (choice.equals("1")) {
 				print("Log in by username");
