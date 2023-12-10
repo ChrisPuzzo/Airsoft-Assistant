@@ -12,9 +12,9 @@ public class UserPortal {
 		System.out.println(text);
 	}
 	
-	//public String textInput() {
-		//return myObj.nextLine();
-	//}
+	public static ArrayList<User> arrayAccess() {
+		return currentUsers;
+	}
 	
 	private static User regUI(String usern) {
 		User newUser = new User(usern);

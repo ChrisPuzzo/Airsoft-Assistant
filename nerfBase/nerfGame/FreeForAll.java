@@ -1,51 +1,55 @@
 package nerfGame;
 import java.util.Scanner;
+import nerfUser.User;
 import java.util.ArrayList;
 
 public class FreeForAll implements gameInterface {
 
-	ArrayList<String> playerArray = new ArrayList<String>();
+	ArrayList<User> playerArray = new ArrayList<User>(); // Houses players who are playing the game
 	private static String gameName = "Free for All";
 	private int totalPlayers;
+	ArrayList<User> playersReg = new ArrayList<User>(); // Houses all registered players
+
 	
 	Scanner myObj = new Scanner(System.in); // add scanner module to read in commands
 
+	private static void print(String text) {
+		System.out.println(text);
+	}
+	
+	public FreeForAll(ArrayList<User> playerArray) {
+		print("welcome to free for all");
+		gameRules();
+		playersReg = playerArray;		
+	}
+	
+	public void gameGo() {
+		print("Add players");
+		String choice = "1";
+		while(choice.equals("0") != true) {
+			print("Enter a userID to add them to the game");
+			print("When you are done type 0");
+			choice = myObj.nextLine();
+			for (int i = 0; i < playersReg.size(); i++) {
+				User player = playersReg.get(i);
+				if (player.getUserID().equals(choice)){
+					addPlayer(player);
+				}
+			}
+				
+		}
+		
+	}
 	
 	@Override
 	public void gameRules() {
 		System.out.println("Free For All: be the last man standing to win.");
 	}
 
-	@Override
-	public void addPlayer(String playerID) {
-		playerArray.add(playerID);	
-	}
 
 	@Override
-	public void startGame() {
-		System.out.println("Starting Game" + gameName);
-		System.out.println("Please add players to the game by inputting their IDs");
-		System.out.println("When all players are submitted type 0");
-		boolean stop = false;
-		while (stop == false)
-		{
-			System.out.println("Enter player ID:");
-		    String id = myObj.nextLine();
-		    if (id == "0")
-		    {
-		    	stop = true;
-		    }
-		    else
-		    {
-		    	this.addPlayer(id);
-		    }	
-		}
-		System.out.println(playerArray);
-		this.totalPlayers = playerArray.size();
-		
-	}
-
-	public void elimination(String playerID) {
+	
+	public void elimination(User playerID) {
 		playerArray.remove(playerID);
 		
 	}
@@ -66,6 +70,12 @@ public class FreeForAll implements gameInterface {
 
 	public void setTotalPlayers(int totalPlayers) {
 		this.totalPlayers = totalPlayers;
+	}
+
+	@Override
+	public void addPlayer(User playerID) {
+		playerArray.add(playerID);
+		
 	}
 	
 

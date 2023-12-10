@@ -1,11 +1,10 @@
 package nerfGame;
+import nerfUser.User;
 
 public interface gameInterface {	
-	
-	
 	void gameRules(); //displays game rules
-	void addPlayer(String playerID); //add users to game
-	void startGame(); //starts the game
-	void elimination(String playerID); //registers hits
+	void addPlayer(User player); //add users to game
+	void elimination(User player); //registers hits
+	void gameGo(); // runs game
 	void teamGen(); //generates teams - not priority
 }
