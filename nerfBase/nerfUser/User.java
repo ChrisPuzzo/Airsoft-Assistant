@@ -5,11 +5,12 @@ public class User {
 	
 	private String userName;
 	private String userID;
-	private int wins;
-	private int elims;
-	private int gamesPlayed;
-	private double winPercent;
-	private double kd;
+	private int wins = 0;
+	private int elims = 0;
+	private int gamesPlayed = 0;
+	private double winPercent = 0.0;
+	private double kd = 0.0;
+	private int deaths = 0;
 	
 	// Constructor
 	public User(String usern) 
@@ -17,10 +18,6 @@ public class User {
 		this.setUserName(usern);
 		userName = usern;
 		this.genUserID();
-		this.setWins(0);
-		this.setElims(0);
-		this.setGamesPlayed(0);
-		this.genWinPer();
 		this.genKd();
 	}
 	
@@ -37,46 +34,54 @@ public class User {
 		this.setUserID(digStr);
 	}
 	
-	//
+	// generates a kill to death ration 
 	private void genKd() {
 		double newKd;
-		if (this.gamesPlayed == 0) {
-			setKd(0);
+		if (this.deaths == 0) {
+			setKd(this.elims);
 		}
 		else {
-			newKd = this.elims/this.gamesPlayed;
+			newKd = this.elims/this.deaths;
 			setKd(newKd);
 		}
 	}
 	
-	
+	// states the user participated in a game
 	public void playGame() {
 		int games = getGamesPlayed();
 		this.setGamesPlayed(games + 1);
 	}
 	
+	// generates their win percentages
 	private void genWinPer()
 	{
 		double winPer;
-		winPer = this.winPercent/this.gamesPlayed;
+		winPer = this.wins/this.gamesPlayed;
 		setWinPercent(winPer);
 	}
 	
+	// adds a win to this player
 	public void win()
 	{
 		setWins(getWins() + 1);
-		genKd();
+		genWinPer();
 	}
 	
+	// adds a kill to this player
 	public void elimination()
 	{
 		setElims(getElims() + 1);
+		genKd();
+	}
+	// adds a death to this player
+	public void death() {
+		setDeaths(getDeaths() + 1);
+		genKd();
 		genWinPer();
 	}
 	
 	
-	// Getter for userName
-	// Don't want to be able to change username
+	// Getter and Setter for userName
 	public String getUserName() {
 		return userName;
 	}
@@ -89,6 +94,7 @@ public class User {
 	public String getUserID() {
 		return userID;
 	}
+	
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
@@ -136,6 +142,16 @@ public class User {
 
 	public void setKd(double kd) {
 		this.kd = kd;
+	}
+
+
+	public int getDeaths() {
+		return deaths;
+	}
+
+
+	public void setDeaths(int deaths) {
+		this.deaths = deaths;
 	}
 	
 	

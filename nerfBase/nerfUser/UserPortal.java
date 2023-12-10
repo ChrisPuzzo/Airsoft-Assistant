@@ -22,7 +22,11 @@ public class UserPortal {
 	}
 	
 	private static void displayUser(User user) {
-		
+		print("Username: " + user.getUserName());
+		print("User ID: " + user.getUserID());
+		print("K/D" + (user.getKd()+"") + " or " + (user.getElims()+"") + "/" + (user.getDeaths()+""));
+		print("Total Games Played: " + (user.getGamesPlayed()+""));
+		print("Win %: " + (user.getWinPercent()+""));
 	}
 	
 	public static void main(String[] args) {
@@ -36,8 +40,17 @@ public class UserPortal {
 			String choice = myObj.nextLine().toString();
 			if (choice.equals("1")) {
 				print("Log in by username");
-				
-				
+				String searchName = myObj.nextLine();
+				 for (int i = 0; i < currentUsers.size(); i++)
+				 {
+					 if ((currentUsers.get(i).getUserName()).equals(searchName))
+					 {
+						 displayUser(currentUsers.get(i));
+						 break;
+					 }
+				 }
+				print("User not found, please register new user or check spelling");
+
 				
 			}
 			else if (choice.equals("2")) {
