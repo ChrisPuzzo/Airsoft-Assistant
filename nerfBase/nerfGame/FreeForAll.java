@@ -46,6 +46,7 @@ public class FreeForAll implements gameInterface {
 					print("Checking...");
 					addPlayer(player);
 					print(player.getUserName() + " Added");
+					player.playGame();
 					found = true;
 					break;
 				}
@@ -57,7 +58,8 @@ public class FreeForAll implements gameInterface {
 		}
 		print("all players added");
 		gameRules();
-		while (playerArray.size()!=1) {
+		print(playerArray.size()+"");
+		while (playerArray.size() > 1) {
 			print("record player deaths by entering their usernames");
 			String death = myObj.nextLine();
 			print("record the player who eliminated this player");
@@ -65,12 +67,14 @@ public class FreeForAll implements gameInterface {
 			for (int i = 0; i < playerArray.size(); i++) {
 				User currPlayer = playerArray.get(i);
 				if ((currPlayer.getUserName()).equals(death)) {
-					elimination(currPlayer);
+					dead(currPlayer);
 				}
-				if ((currPlayer.getUserName().equals(elim))) {
+				else if ((currPlayer.getUserName().equals(elim))) {
 					currPlayer.elimination();
 				}
+				print(playerArray.size()+"");
 			}
+		}
 		User winner = playerArray.get(0);
 		print("The Winner is " + winner.getUserName()+ "!");
 		winner.win();
@@ -78,7 +82,7 @@ public class FreeForAll implements gameInterface {
 		playerArray.clear();
 		playersReg.clear();
 		System.exit(0);
-		}
+		
 	}
 	
 	@Override
@@ -89,12 +93,14 @@ public class FreeForAll implements gameInterface {
 
 	@Override
 	
-	public void elimination(User playerID) {
+	public void dead(User playerID) {
 		playerArray.remove(playerID);
 		playerID.death();
 		
 	}
 
+	
+	
 	@Override
 	public void teamGen() {
 		System.out.println("There are no teams in this game");
