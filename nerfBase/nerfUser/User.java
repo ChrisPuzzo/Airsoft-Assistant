@@ -29,7 +29,10 @@ public class User {
 	private void genUserID(){
 		double dig;
 		String digStr;
-		dig = Math.random() * Math.pow(10,16);
+		int min = 10000;
+		int max = 99999;
+		int range = max - min + 1;
+		dig = (int)Math.round(Math.random() * range + min);
 		digStr = String.valueOf(dig);
 		this.setUserID(digStr);
 	}
@@ -37,8 +40,13 @@ public class User {
 	//
 	private void genKd() {
 		double newKd;
-		newKd = this.elims/this.gamesPlayed;
-		setKd(newKd);
+		if (this.gamesPlayed == 0) {
+			setKd(0);
+		}
+		else {
+			newKd = this.elims/this.gamesPlayed;
+			setKd(newKd);
+		}
 	}
 	
 	

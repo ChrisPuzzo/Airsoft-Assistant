@@ -12,13 +12,17 @@ public class UserPortal {
 		System.out.println(text);
 	}
 	
-	private static String textInput() {
-		return myObj.nextLine();
-	}
+	//public String textInput() {
+		//return myObj.nextLine();
+	//}
 	
 	private static User regUI(String usern) {
 		User newUser = new User(usern);
 		return newUser;
+	}
+	
+	private static void displayUser(User user) {
+		
 	}
 	
 	public static void main(String[] args) {
@@ -27,19 +31,32 @@ public class UserPortal {
 		print("(1) Log in existing user");
 		print("(2) register new user");
 		print("(3) Exit");
-		String choice = textInput();
-		if (choice == "1") {
-			print("Log in by username");
+		while (true)
+		{
+			String choice = myObj.nextLine().toString();
+			if (choice.equals("1")) {
+				print("Log in by username");
+				
+				
+				
+			}
+			else if (choice.equals("2")) {
+				System.out.println("Please enter a username");
+			    String user = myObj.nextLine();
+				currentUsers.add(regUI(user));
+				print(currentUsers.get(currentUsers.size() - 1).getUserID());
+				
+			}
+			else if (choice.equals("3")) {
+				System.exit(0);
+			}
+			else {
+				print("got diffrerent thing");
+				print(choice);
+				System.out.print(choice.getClass());
+				System.out.print("1".getClass());
+			}
 		}
-		if (choice == "2") {
-			System.out.println("Please enter a username");
-		    String user = myObj.nextLine();
-			currentUsers.add(regUI(user));
-		}
-		if (choice == "3") {
-			System.exit(0);
-		}
-		
 	}
 	
 }

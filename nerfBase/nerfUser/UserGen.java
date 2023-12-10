@@ -12,7 +12,6 @@ public class UserGen {
 	public User regUI() {
 		System.out.println("Please enter a username");
 	    String user = myObj.nextLine();
-		System.out.println("Enter a password:");
 		User newUser = this.createUser(user);
 		return newUser;
 	}
